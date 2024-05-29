@@ -1,0 +1,32 @@
+### Register
+POST http://0.0.0.0:7100/register 
+Content-Type: application/json
+ 
+{
+  "firstName": "test-user",
+  "lastName": "101",
+  "email": "test-user@test.com",
+  "deviceType": "Mobile",
+  "modelNumber": "XYZ123",
+  "mobileNo": 1234567888,
+  "password": "test",
+  "status": "ACTIVE",
+  "activated": true
+}
+
+### Login
+POST http://0.0.0.0:7100/login
+Content-Type: application/json
+
+{
+  "username": "1234567888",
+  "password": "test"
+}
+
+### Get user Details by mobile
+GET http://0.0.0.0:7100/get-user-by-mobile?mobile_no=1234567888
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAzMTc4NDQsImlkIjoxMjM0NTY3ODg4LCJvcmlnX2lhdCI6MTcxMDMxNDI0NH0.nsFiCrST24rFUblubYo5rfRph9r_st8vKecMGlPq110
+
+### Get user Details by email
+GET http://0.0.0.0:7100/get-user-by-email?email=test-user@test.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAzMTc4NDQsImlkIjoxMjM0NTY3ODg4LCJvcmlnX2lhdCI6MTcxMDMxNDI0NH0.nsFiCrST24rFUblubYo5rfRph9r_st8vKecMGlPq110

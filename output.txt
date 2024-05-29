@@ -1,0 +1,57 @@
+.
+├── output.txt
+├── README.md
+├── vsys.commons
+│   ├── go.mod
+│   ├── go.sum
+│   ├── model
+│   │   ├── bitBool.go
+│   │   ├── changePasswordReq.go
+│   │   ├── completeRegistrationOfEndUserReq.go
+│   │   ├── endUser.go
+│   │   ├── endUserRole.go
+│   │   ├── errorResp.go
+│   │   ├── initiateRegistrationReq.go
+│   │   ├── loginReq.go
+│   │   ├── loginResp.go
+│   │   ├── notification.go
+│   │   ├── otpDetail.go
+│   │   ├── otpVerificationReq.go
+│   │   └── resetPasswordFinishReq.go
+│   ├── utils
+│   │   └── utils.go
+│   └── websecure
+│       └── websecure.go
+├── vsys.dbhelper
+│   ├── dao
+│   │   ├── endUserHandler.go
+│   │   ├── endUserRoleHandler.go
+│   │   └── otpDetailsHandler.go
+│   ├── db
+│   │   └── db.go
+│   ├── Dockerfile
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   └── server
+│       └── web.go
+├── vsys.docker
+│   ├── build.sh
+│   ├── env
+│   ├── init_db.sql
+│   ├── local-release.sh
+│   ├── rest.http
+│   └── vsys-compose.yml
+└── vsys.rest
+    ├── Dockerfile
+    ├── go.mod
+    ├── go.sum
+    ├── main.go
+    ├── server
+    │   └── web.go
+    └── services
+        ├── otpVerification.go
+        ├── smsService.go
+        └── utils.go
+
+13 directories, 42 files

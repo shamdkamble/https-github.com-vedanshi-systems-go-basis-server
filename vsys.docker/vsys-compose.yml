@@ -1,0 +1,46 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    network_mode: "host"
+    container_name: vsys.db
+    restart: always
+    # ports:
+    #   - ${DB_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./data:/var/lib/mysql
+
+  dbhelper:
+    build: ../vsys.dbhelper/
+    image: vedanshis.com/dbhelper
+    container_name: vsys.dbhelper
+    network_mode: "host"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_NAME}
+      DBHELPER_PORT: ${DBHELPER_PORT}
+      
+  restsrv:
+    build: ../vsys.rest/
+    image: vedanshis.com/rest
+    container_name: vsys.rest
+    network_mode: "host"
+    depends_on:
+      - dbhelper
+      - db
+    environment:
+      DBHELPER_HOST: ${DBHELPER_HOST}
+      DBHELPER_PORT: ${DBHELPER_PORT}
+      RESTSRV_PORT: ${RESTSRV_PORT}
